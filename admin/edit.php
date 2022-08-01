@@ -15,7 +15,7 @@ if(isset($_GET['submit'])){
     $pid=$_GET['pid']; 
     $pname=$_GET['pname']; 
     $price=$_GET['price']; 
-    $descp=$_GET['descp'];
+    $descp=$_GET['desc'];
     $sql=" UPDATE add_product SET pid='$pid', pname='$pname', price='$price', descp='$descp' WHERE pid='$pid' "; 
     $data=$res=mysqli_query($conn,$sql);
     if($data){

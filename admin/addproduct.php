@@ -1,6 +1,6 @@
 <?php
-// include 'header.php';
-require('conn/conn.php');
+include 'header.php';
+require('conn.php');
 if(isset($_POST['submit'])){
     $pid=htmlspecialchars($_POST['pid']);      
     $pname=htmlspecialchars($_POST['pname']);      

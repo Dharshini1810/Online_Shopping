@@ -54,10 +54,9 @@
     </style>
     <navbar style="position:fixed;">
         <ul id="nav">
-            <a href="">
+            <a href="adminlogin.php">
             <uli class="navitem">Logout</uli></a>
-            <a href="displayprod.php"> 
-            <a href="">
+            <a href="adminorders.php">
             <uli class="navitem">Placed Order</uli></a>
             <a href="displayprod.php"> 
             <uli class="navitem">Product Details</uli></a>

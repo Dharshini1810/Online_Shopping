@@ -1,11 +1,18 @@
 <?php
-include('header.php'); 
 require('conn.php'); 
 $id=$_GET['id']; 
+$uid=$_GET['uid'];
 $sql="SELECT * FROM add_product"; 
 $result=mysqli_fetch_all(mysqli_query($conn,$sql)); 
 ?> 
 <style>
+     h1{
+            padding-top: 6rem;
+            color: #dd6564; ;
+            font-size: 30px;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; 
+            text-align:center;
+    } 
     h3{
         text-align:center;
     }
@@ -41,7 +48,7 @@ $result=mysqli_fetch_all(mysqli_query($conn,$sql));
     <h3><?php echo $res[4];?></h3>                   
     <?php } ?>    
     <?php } ?>
-    <a style="margin-bottom: 25px;" href="edit.php?id=<?php echo $id?>">
-        <button style="width:100px; height: 30px; margin-top:20px;border:none; background-color:#dd6564; color: white;">EDIT</button>
+    <a style="margin-bottom: 25px;" href="header.php?id=<?php echo $uid?>">
+        <button style="width:100px; height: 30px; margin-top:20px;border:none; background-color:#dd6564; color: white;">BACK</button>
     </a> 
 </div> 

@@ -1,3 +1,20 @@
+<?php
+require('conn.php');
+if(isset($_POST['submit'])){
+    $mailid=$_POST['email']; 
+    $password=$_POST['password']; 
+    $query="SELECT * FROM adminlogin";
+    $data=mysqli_query($conn,$query); 
+    foreach($data as $data1){
+        if($data1['email'] == $mailid and $data1['pswd'] == $password){
+            $id=$data1['id'];
+            echo "<script>alert('Login Successful!')</script>";
+            header("location:displayprod.php");
+            break;
+        }
+    }
+}
+?>
 <!Doctype HMTL>
 <html>
     <head>
@@ -30,7 +47,7 @@
                 opacity: 0.4; 
                 font-size: 15px;
                 color: black; 
-                padding: 10px;  
+                padding-left: 20px;  
             } 
             .buttons{
                 width: 20rem;
@@ -47,12 +64,12 @@
     </head> 
     <body>
         <h1>Admin Login</h1>
-        <form action="#" method="POST">
+        <form action="adminlogin.php" method="POST">
             <label>EMAIL:</label><br>
             <input class="inputtag" type="email" name="email"><br> 
             <label>PASSWORD:</label><br> 
             <input class="inputtag" type="password" name="password"><br>
-            <input type="submit" class="buttons" value="SUBMIT"><br>
+            <input type="submit" name="submit" class="buttons" value="SUBMIT"><br>
         </form>
     </body>
 </html>

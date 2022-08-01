@@ -1,10 +1,10 @@
 <?php
     require("conn.php");
-    $id=$_GET['id']; 
+    $id1=$_GET['id']; 
     $query="SELECT * FROM user_register";
     $data=mysqli_query($conn,$query); 
     foreach($data as $data1){
-        if($data1['id'] == $id){
+        if($data1['id'] == $id1){
             $name=$data1['name']; 
             break;
         }    
@@ -15,7 +15,7 @@
     <style>
         h1{
             padding-top: 6rem;
-            color: #dd6564; ;
+            color: #dd6564; 
             font-size: 30px;
             font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; 
             text-align:center;
@@ -69,7 +69,7 @@
     </style>
     <navbar style="position:fixed;">
         <ul id="nav">
-            <a href="">
+            <a href="login.php">
             <uli class="navitem">Logout</uli></a>
             <uli style="padding-right: 75rem;" class="navitem">hello, <?php echo $name ?></uli></a>
         </ul>
@@ -123,11 +123,11 @@ $prod=mysqli_fetch_all($result,MYSQLI_ASSOC); //2-d array format
         <td><?php echo $product['pname']?></td>
         <td><?php echo $product['price']?></td>
         <td>
-        <a style="margin-left: -100px;" href="info.php?id=<?php echo $product['id']?>">
+        <a style="margin-left: -100px;" href="info.php?id=<?php echo $product['id']?>&uid=<?php echo $id1?>">
         <button>View</button></a></td>
         <td>
-        <a style="margin-left: -350px;" href="displayprod.php?id=<?php echo $product['id']?>">
-        <button value="delete">Place Order</button></a></td>
+        <a style="margin-left: -350px;" href="placedorder.php?id1=<?php echo $id1?>&id=<?php echo $product['id']?>">
+        <button>Place Order</button></a></td>
     </tr>
     <?php } ?>
 </table>
