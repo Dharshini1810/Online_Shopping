@@ -1,3 +1,21 @@
+<?php
+require('conn.php');
+if(isset($_POST['submit'])){
+    $mailid=$_POST['email']; 
+    $password=$_POST['password']; 
+    $query="SELECT * FROM user_register";
+    $data=mysqli_query($conn,$query); 
+    foreach($data as $data1){
+        if($data1['email'] == $mailid and $data1['pswd'] == $password){
+            $id=$data1['id'];
+            echo "<script>alert('Login Successful!')</script>";
+            header("location:header.php?id=$id");
+            break;
+        }
+        // echo 'data';
+    }
+}
+?>
 <!Doctype HMTL>
 <html>
     <head>
@@ -47,13 +65,14 @@
     </head> 
     <body>
         <h1>Register/Login</h1>
-        <form action="#" method="POST">
+        <form action="login.php" method="POST">
             <label>EMAIL:</label><br>
             <input class="inputtag" type="email" name="email"><br> 
             <label>PASSWORD:</label><br> 
             <input class="inputtag" type="password" name="password"><br>
-            <input type="submit" class="buttons" value="SUBMIT"><br>
-            <button class="buttons">REGISTER</button>
+            <input type="submit" name="submit" class="buttons" value="SUBMIT"><br>
         </form>
+        <a href="register.php">                
+            <button style="margin-left: 37.5rem;" class="buttons">REGISTER</button></a>
     </body>
 </html>

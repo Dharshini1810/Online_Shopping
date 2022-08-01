@@ -1,10 +1,10 @@
 <!Doctype HMTL>
 <html>
    <?php
+        require('conn.php');  
         $nameerr="";$noerr="";$pswderr="";
         $f1=0;$f2=0;$f3=0;
         if(isset($_POST['submit'])){
-            require('conn.php');  
             $name=htmlspecialchars($_POST['name1']); 
             $mobno=htmlspecialchars($_POST['mobno']); 
             $email=htmlspecialchars($_POST['email']); 
@@ -28,15 +28,21 @@
                 $f3=1;
             } 
             if($f1==1 and $f2==1 and $f3==1){    
-                $name1=mysqli_real_escape_string($conn,$_POST['name1']);
-                $mobno=mysqli_real_escape_string($conn,$_POST['mobno']);
-                $email=mysqli_real_escape_string($conn,$_POST['email']);
-                $pswd=mysqli_real_escape_string($conn,$_POST['pswd']);
-                $sql="INSERT INTO user_register(name,mobno,email,pswd) VALUES('$name1','$mobno','$email','$pswd')";
+                $name=mysqli_real_escape_string($conn,$name);
+                $mobno=mysqli_real_escape_string($conn,$mobno);
+                $email=mysqli_real_escape_string($conn,$email);
+                $pswd=mysqli_real_escape_string($conn,$pswd);
+                $sql="INSERT INTO user_register(name,mobno,email,pswd) VALUES('$name','$mobno','$email','$pswd')";
                 if (!mysqli_query($conn,$sql)) {
                     echo 'Data Not inserted';
                 }
+                else{
+                    echo "<script>alert('Registration Done Successfully!! Now login')</script>";
+                }
             }    
+            $nameerr="";
+            $noerr="";
+            $pswderr="";
         }  
    ?>
     <head>
@@ -71,7 +77,7 @@
                 color: black; 
                 padding-left: 20px;  
             } 
-            .buttons{
+            .button1{
                 width: 20rem;
                 height: 3rem; 
                 background: #dd6564;
@@ -98,8 +104,9 @@
             <label>PASSWORD:</label><br> 
             <input class="inputtag" type="password" name="pswd" required><br>
             <p style="margin-top:-10px; color:red"><?php echo $pswderr ?></p>
-            <input type="submit" name="submit" class="buttons" value="SUBMIT"><br>
-            <button class="buttons">LOGIN</button>
-        </form>
+            <input type="submit" name="submit" class="button1" value="SUBMIT"><br>
+        </form>    
+            <a href="login.php">                
+            <button style="margin-left: 37.5rem;" class="button1">LOGIN</button></a>
     </body>
 </html>
